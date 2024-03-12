@@ -99,3 +99,35 @@
   display: flex;
   justify-content: space-around;
 }
+.single-article{
+  margin: 10px;
+  border: solid black;
+  border-radius: 10px;
+  background-color:#f0f0f0;
+  color: black;
+  padding: 10px;
+}
+.single-article-details {
+  background-color:  rgb(220, 220, 220);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.single-article-header{
+  background-color:  rgb(220, 220, 220);
+  border-radius: 10px;
+}
+.single-article-body{
+  margin: 10px;
+  border: solid black;
+  border-radius: 10px;
+  background-color:#f0f0f0;
+  color: black;
+  padding: 10px;
+}
+
+.comment-card{
+  list-style: none;
+  text-align: left;
+  border-bottom: solid black;
+}

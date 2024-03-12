@@ -15,5 +15,12 @@ export const fetchArticleById = (article_id) =>{
     return myApi.get(`/articles/${article_id}`)
     .then((res) =>{
       return res.data.article
-    })}
+    })
+}
 
+export const fetchAllComments =(article_id)=>{
+    return myApi.get(`/articles/${article_id}/comments`)
+    .then((res)=>{
+        return res.data.comments
+    })
+}
