@@ -24,9 +24,10 @@ const Articles = ()=>{
     <div>
       <h2>Articles</h2>
       <ul>{articleList.map((article) => {
-        return  <Link to={`/articles/${article.article_id}`}>
-        <ArticleCard article={article} />
-      </Link>
+        return <>
+        <Link to={`/articles/${article.article_id}`}>View Article</Link>
+        <ArticleCard article={article}/>
+        </>
       })}</ul>
     </div>
   );
