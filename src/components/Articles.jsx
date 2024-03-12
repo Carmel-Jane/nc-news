@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchAllArticles } from "../../utils/api";
 import ArticleCard from "./ArticleCard";
+import { Link } from "react-router-dom";
 
-
-export default function Articles() {
+const Articles = ()=>{
   const [articleList, setArticleList] = useState([]);
 
   useEffect(() =>{
@@ -20,8 +20,17 @@ export default function Articles() {
     <div>
       <h2>Articles</h2>
       <ul>{articleList.map((article) => {
-        return <ArticleCard key={article.article_id} article={article}/>
+        return <Link
+              key={article.article_id}
+              onClick={() => {
+                setArticleId(article.article_id);
+              }}
+              to={`/articles/${article.article_id}`}
+            >
+              <ArticleCard article={article} setArticleList={setArticleList} />
+            </Link>
       })}</ul>
     </div>
   );
 }
+export default Articles

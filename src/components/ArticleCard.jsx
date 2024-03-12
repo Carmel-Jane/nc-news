@@ -1,6 +1,5 @@
-export default function ArticleCard({ article }) {
-
-  const formatDate = (dateString) =>{
+const ArticleCard =({ article }) => {
+const formatDate = (dateString) =>{
     const date = new Date(dateString)
     return date.toLocaleString()
   }
@@ -22,3 +21,4 @@ export default function ArticleCard({ article }) {
       </li>
     );
   }
+  export default ArticleCard
