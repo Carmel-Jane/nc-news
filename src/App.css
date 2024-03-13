@@ -160,3 +160,13 @@
 #downVote:hover {
   background-color: darkred;
 }
+
+.toast-container{
+
+    width: 250px; 
+    font-size: 14px;
+  }
+  
+.delete-button{
+  color: red;
+}
