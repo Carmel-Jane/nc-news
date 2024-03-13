@@ -36,3 +36,7 @@ export const patchArticleVotes= (votes, article_id) =>{
 export function postComment (articleId, commentData) {
     return myApi.post(`articles/${articleId}/comments`, commentData)
 }
+
+export function deleteComment (commentId) {
+  return myApi.delete(`comments/${commentId}`)
+}
