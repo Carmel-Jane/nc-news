@@ -4,17 +4,27 @@ import Header from "./components/Header";
 import Articles from "./components/Articles";
 import Home from "./components/Home"
 import SingleArticle from "./components/SingleArticle";
-import Comments from "./components/Comments";
+import UserContext from "./contexts/UserContext";
+import { useState } from "react";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState({
+    username: "tickle122",
+    name: "Tom Tickle",
+    avatar_url:
+      "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953",
+  });
   return (
     <>
+
+<UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <Header/>
       <Routes>
       <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
         <Route path={`/articles/:articleId`} element={<SingleArticle />} />
       </Routes>
+      </UserContext.Provider>
     </>
   );
 }

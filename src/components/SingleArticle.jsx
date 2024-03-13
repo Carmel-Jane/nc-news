@@ -1,25 +1,31 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById, patchArticleVotes } from "../../utils/api";
+import { fetchArticleById, patchArticleVotes, postComment } from "../../utils/api";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 const SingleArticle = () => {
-  const [article, setArticle] = useState({});
+  const [article, setArticle] = useState({
+    comments: [], // Initialize comments as an empty array
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [voteError, setVoteError] = useState(null);
-  const [userVote, setUserVote] = useState(0); // 0 for no vote, 1 for upvote, -1 for downvote
+  const [userVote, setUserVote] = useState(0);
 
   let { articleId } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticleById(articleId).then((article) => {
-      setArticle(article);
-      setIsLoading(false);
-    });
+    fetchArticleById(articleId)
+      .then((article) => {
+        setArticle(article);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching article:", error);
+        setIsLoading(false);
+      });
   }, [articleId]);
-
-  if (isLoading) return <p>Loading...</p>;
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -29,24 +35,21 @@ const SingleArticle = () => {
   const addUpvote = (articleId) => {
     if (userVote === 1) return;
 
-    setArticle((currentArticle) => {
-      return { ...currentArticle, votes: currentArticle.votes + 1 };
-    });
+    setArticle((currentArticle) => ({
+      ...currentArticle,
+      votes: currentArticle.votes + 1,
+    }));
 
     setUserVote(1);
 
     const votes = { inc_votes: 1 };
     patchArticleVotes(votes, articleId)
       .then((updatedArticle) => {
-        setArticle((article) =>
-          article.article_id === updatedArticle.article_id
-            ? { ...article, votes: updatedArticle.votes }
-            : article
-        );
+        setArticle(updatedArticle);
         setVoteError(null);
       })
       .catch((err) => {
-        console.log(err, "upvote error");
+        console.error("Upvote error:", err.message);
         setVoteError(err.message);
       });
   };
@@ -54,25 +57,54 @@ const SingleArticle = () => {
   const removeUpvote = (articleId) => {
     if (userVote === -1) return;
 
-    setArticle((currentArticle) => {
-      return { ...currentArticle, votes: currentArticle.votes - 1 };
-    });
+    setArticle((currentArticle) => ({
+      ...currentArticle,
+      votes: currentArticle.votes - 1,
+    }));
 
     setUserVote(-1);
 
     const votes = { inc_votes: -1 };
     patchArticleVotes(votes, articleId)
       .then((updatedArticle) => {
-        setArticle((article) =>
-          article.article_id === updatedArticle.article_id
-            ? { ...article, votes: updatedArticle.votes }
-            : article
-        );
+        setArticle(updatedArticle);
         setVoteError(null);
       })
       .catch((err) => {
-        console.log(err, "downvote error");
+        console.error("Downvote error:", err.message);
         setVoteError(err.message);
+      });
+  };
+
+  const addComment = (newComment) => {
+    setArticle((prevArticle) => {
+      const updatedComments = prevArticle.comments ? [...prevArticle.comments, newComment] : [newComment];
+      return {
+        ...prevArticle,
+        comments: updatedComments,
+        comment_count: (prevArticle.comment_count || 0) + 1,
+      };
+    });
+
+    postComment(articleId, newComment)
+      .then((postedComment) => {
+        const updatedComments = (article.comments || []).map((comment) =>
+          comment.id === newComment.id ? postedComment : comment
+        );
+        setArticle((prevArticle) => ({
+          ...prevArticle,
+          comments: updatedComments,
+        }));
+      })
+      .catch((error) => {
+        console.error("Error posting comment:", error);
+        const updatedComments = (article.comments || []).filter((comment) => comment.id !== newComment.id);
+        setArticle((prevArticle) => ({
+          ...prevArticle,
+          comments: updatedComments,
+          comment_count: (prevArticle.comment_count || 0) - 1,
+        }));
+        setVoteError("Error posting comment. Please try again.");
       });
   };
 
@@ -98,6 +130,9 @@ const SingleArticle = () => {
         <button id="downVote" onClick={() => removeUpvote(article.article_id)}>
           Downvote
         </button>
+      </div>
+      <div className="post-comment-section">
+        <CommentForm articleId={articleId} addComment={addComment} />
       </div>
       <div className="single-article-details">
         <p>Comments: {article.comment_count}</p>

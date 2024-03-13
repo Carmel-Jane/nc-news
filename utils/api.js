@@ -31,3 +31,8 @@ export const patchArticleVotes= (votes, article_id) =>{
       return res.data.article
     })
   }
+
+
+export function postComment (articleId, commentData) {
+    return myApi.post(`articles/${articleId}/comments`, commentData)
+}
