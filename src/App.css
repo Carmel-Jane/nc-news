@@ -131,3 +131,32 @@
   text-align: left;
   border-bottom: solid black;
 }
+.article-voting-buttons {
+  display: flex;
+  gap: 10px;
+  
+}
+#upVote {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#upVote:hover {
+  background-color: darkgreen;
+}
+
+
+#downVote {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#downVote:hover {
+  background-color: darkred;
+}
