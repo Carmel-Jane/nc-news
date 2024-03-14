@@ -1,4 +1,4 @@
-const ArticleCard =({ article }) => {
+function ArticleCard({ article }){
 const formatDate = (dateString) =>{
     const date = new Date(dateString)
     return date.toLocaleString()

@@ -1,6 +1,6 @@
 import { fetchAllTopics } from "../../utils/api"
 import TopicCard from "./TopicCard";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Topics = () =>{
@@ -22,13 +22,19 @@ const Topics = () =>{
 
   return (
     <div>
-      <h2>Topics</h2>
-      <ul>{topicList.map((topic) => {
-        return <><Link key={topic.slug} to={`/topics/${topic.slug}`}>View articles about {topic.slug}</Link>
-        <TopicCard  topic={topic} /></>
-      })}</ul>
-    </div>
-  );
+    <h2>Topics</h2>
+    <ul>
+      {topicList.map((topic) => (
+      <React.Fragment  key= {topic.slug}>
+          <div className="topic-container">
+            <Link to={`/topics/${topic.slug}`}>View articles about {topic.slug}</Link>
+            <TopicCard topic={topic} />
+          </div>
+          </React.Fragment>
+      ))}
+    </ul>
+  </div>
+);
 }
 
 export default Topics

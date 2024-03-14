@@ -6,7 +6,7 @@ import CommentForm from "./CommentForm";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({
-    comments: [], // Initialize comments as an empty array
+    comments: [], 
   });
   const [isLoading, setIsLoading] = useState(true);
   const [voteError, setVoteError] = useState(null);
@@ -76,6 +76,7 @@ const SingleArticle = () => {
       });
   };
 
+  
   const addComment = (newComment) => {
     setArticle((prevArticle) => {
       const updatedComments = prevArticle.comments ? [...prevArticle.comments, newComment] : [newComment];
@@ -86,27 +87,28 @@ const SingleArticle = () => {
       };
     });
 
+
     postComment(articleId, newComment)
-      .then((postedComment) => {
-        const updatedComments = (article.comments || []).map((comment) =>
-          comment.id === newComment.id ? postedComment : comment
-        );
-        setArticle((prevArticle) => ({
-          ...prevArticle,
-          comments: updatedComments,
-        }));
-      })
-      .catch((error) => {
-        console.error("Error posting comment:", error);
-        const updatedComments = (article.comments || []).filter((comment) => comment.id !== newComment.id);
-        setArticle((prevArticle) => ({
-          ...prevArticle,
-          comments: updatedComments,
-          comment_count: (prevArticle.comment_count || 0) - 1,
-        }));
-        setVoteError("Error posting comment. Please try again.");
-      });
-  };
+    .then((postedComment) => {
+      const updatedComments = (article.comments || []).map((comment) =>
+        comment.id === newComment.id ? postedComment : comment
+      );
+      setArticle((prevArticle) => ({
+        ...prevArticle,
+        comments: updatedComments,
+      }));
+    })
+    .catch((error) => {
+      console.error("Error posting comment:", error);
+      const updatedComments = (article.comments || []).filter((comment) => comment.id !== newComment.id);
+      setArticle((prevArticle) => ({
+        ...prevArticle,
+        comments: updatedComments,
+        comment_count: (prevArticle.comment_count || 0) - 1,
+      }));
+      setVoteError("Error posting comment. Please try again.");
+    });
+};
 
   return (
     <div className="single-article">

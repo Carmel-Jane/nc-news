@@ -1,13 +1,13 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Articles from "./components/Articles";
 import Home from "./components/Home"
 import SingleArticle from "./components/SingleArticle";
 import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import Topics from "./components/Topics";
 import SingleTopic from "./components/SingleTopic";
+import Articles from "./components/Articles"
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -18,7 +18,6 @@ function App() {
   });
   return (
     <>
-
 <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <Header/>
       <Routes>
