@@ -4,9 +4,8 @@ const myApi = axios.create({
   baseURL: 'https://cj-northcoders-news-api.onrender.com/api'
 }) 
 
-export const fetchAllArticles = (topic) =>{
-  console.log(topic)
-  return myApi.get(`/articles`, { params: {topic}})
+export const fetchAllArticles = (topic, sort_by,order) =>{
+  return myApi.get(`/articles`, { params: {topic,sort_by,order}})
   .then((res) =>{
     return res.data.articles
   })

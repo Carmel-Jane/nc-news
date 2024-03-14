@@ -170,3 +170,10 @@
 .delete-button{
   color: red;
 }
+
+.dropdown-select {
+  margin: 10px;
+  border: solid black;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
