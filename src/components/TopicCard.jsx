@@ -1,6 +1,6 @@
 const TopicCard = ({topic})=>{
     return(
-        <li key= {topic.slug} className="topic-card">
+        <li className="topic-card">
             <h2 className="topic-name">{topic.slug}</h2>
             <p>{topic.description}</p>
         </li>
