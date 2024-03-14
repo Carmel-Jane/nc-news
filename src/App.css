@@ -177,3 +177,23 @@
   border-radius: 10px;
   background-color: #f0f0f0;
 }
+
+.topic-list{
+  list-style: none;
+}
+
+.topic-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.topic-container a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.topic-container:hover {
+  background-color: #f9f9f9;
+}

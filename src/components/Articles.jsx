@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import { fetchAllArticles } from "../../utils/api";
 import ArticleCard from "./ArticleCard";
 import { Link,  useSearchParams, useParams } from "react-router-dom";
@@ -71,12 +72,10 @@ const handleOrderChange = (e) => {
 
     <div>
       <ul>{articleList.map((article) => {
-        return <>
-         <li key={article.article_id}>
+        return    <React.Fragment key={article.article_id}>
         <Link to={`/articles/${article.article_id}`}>View Article</Link>
         <ArticleCard article={article}/>
-        </li>
-        </>
+        </React.Fragment>
       })}</ul>
     </div>
     </>

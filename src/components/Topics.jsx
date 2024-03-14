@@ -22,13 +22,19 @@ const Topics = () =>{
 
   return (
     <div>
-      <h2>Topics</h2>
-      <ul>{topicList.map((topic) => {
-        return <><Link key={topic.slug} to={`/topics/${topic.slug}`}>View articles about {topic.slug}</Link>
-        <TopicCard  topic={topic} /></>
-      })}</ul>
-    </div>
-  );
+    <h2>Topics</h2>
+    <ul>
+      {topicList.map((topic) => (
+        
+          <div className="topic-container">
+            <Link to={`/topics/${topic.slug}`}>View articles about {topic.slug}</Link>
+            <TopicCard topic={topic} />
+          </div>
+     
+      ))}
+    </ul>
+  </div>
+);
 }
 
 export default Topics

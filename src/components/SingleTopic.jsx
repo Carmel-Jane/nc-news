@@ -25,20 +25,18 @@ export default function SingleTopic() {
     return <p>Error: Unable to fetch articles. Please try again later.</p>;
   }
 
-  return (
-    <>
+ return (
+  <>
     <h1>Articles about {slug}</h1>
     <ul className="article-list">
-        {articlesByTopicList.map((article) => {
-            return <><Link
-            key={article.article_id}
-            to={`/articles/${article.article_id}`}
-          >
+      {articlesByTopicList.map((article) => (
+        <li key={article.article_id}>
+          <Link to={`/articles/${article.article_id}`}>
             <ArticleCard article={article} setArticleList={setArticlesByTopicList} />
           </Link>
-          </>
-        })}
+        </li>
+      ))}
     </ul>
-    </>
-  )
+  </>
+);
 }
