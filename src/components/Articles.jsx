@@ -72,8 +72,10 @@ const handleOrderChange = (e) => {
     <div>
       <ul>{articleList.map((article) => {
         return <>
+         <li key={article.article_id}>
         <Link to={`/articles/${article.article_id}`}>View Article</Link>
         <ArticleCard article={article}/>
+        </li>
         </>
       })}</ul>
     </div>
