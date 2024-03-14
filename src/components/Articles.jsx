@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import React from "react";
 import { fetchAllArticles } from "../../utils/api";
 import ArticleCard from "./ArticleCard";
-import { Link,  useSearchParams, useParams } from "react-router-dom";
+import { Link,  useSearchParams, useParams} from "react-router-dom";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 
 const Articles = ()=>{
@@ -12,7 +12,7 @@ const Articles = ()=>{
   const [sort_by, setSortBy] = useState(searchParams.get('sort_by')|| "created_at")
   const [order, setOrder] = useState(searchParams.get('order')||"desc")
   const {topic} = useParams()
-
+ 
  
   useEffect(() =>{
     setIsLoading(true)
@@ -25,7 +25,7 @@ const Articles = ()=>{
     .catch((err) =>{
       console.log(err, "fetch Article list error")
     })
-  }, [order, sort_by])
+  }, [order, sort_by, topic])
 
   const handleSortByChange = (e) => {
     setSortBy(e.target.value)
@@ -68,8 +68,6 @@ const handleOrderChange = (e) => {
             </Select>
         </FormControl>
     </section>
-
-
     <div>
       <ul>{articleList.map((article) => {
         return    <React.Fragment key={article.article_id}>
