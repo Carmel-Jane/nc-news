@@ -27,6 +27,7 @@ const Articles = ()=>{
         setIsLoading(false);
       })
       .catch((err) => {
+        console.log(err.message)
         setError(err.message);
       });
   }, [order, sort_by]);
@@ -39,11 +40,13 @@ const handleOrderChange = (e) => {
     setOrder(e.target.value)
 }
 
-  if (isLoading) return <p>Loading...</p>
-  
- if (error) {
-  return <h1>Error: {error}</h1>;
+if (error) {
+  return <h2>Error: The requested query does not exist. To see available queries, go to the articles link on the above header and look at the dropdown options.</h2>;
 }
+
+  if (isLoading) return <p>Loading...</p>
+
+ 
 
   return (   <>
   <h2>Articles</h2>

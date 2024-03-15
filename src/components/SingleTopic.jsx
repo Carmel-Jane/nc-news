@@ -25,7 +25,7 @@ export default function SingleTopic() {
         setError(err.message); 
       });
   }, [slug]);
-  if (error) return <p>Error: {error}. The requested topic does not exist. To see existing topics, find the topics link in the above header. </p>; 
+  if (error) return <h2>Error: {error}. The requested topic does not exist. To see existing topics, find the topics link in the above header. </h2>; 
 
   if (isLoading) return <p>Loading...</p>;
    
