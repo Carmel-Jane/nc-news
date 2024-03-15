@@ -7,6 +7,7 @@ import React from "react";
 export default function SingleTopic() {
   const [isLoading, setIsLoading] = useState(true);
   const [articlesByTopicList, setArticlesByTopicList] = useState([]);
+  const [error, setError] = useState(null)
   const { slug } = useParams();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function SingleTopic() {
         setArticlesByTopicList(Array.isArray(articles) ? articles : []);
       setIsLoading(false);
     }).catch((err) =>{
-        console.log(err, "fetch article by topic list error")
+        setError(err);
     });
   }, [slug]);
  
@@ -25,15 +26,17 @@ export default function SingleTopic() {
     console.error("articlesByTopicList is not an array:", articlesByTopicList);
     return <p>Error: Unable to fetch articles. Please try again later.</p>;
   }
+  if (error) {
+    return <h1>{error.status}: {error.data.msg}</h1>}
 
  return (
   <>
     <h1>Articles about {slug}</h1>
     <ul className="article-list">
       {articlesByTopicList.map((article) => (<React.Fragment key={article.article_id}>
-          <Link to={`/articles/${article.article_id}`}>
+          <Link to={`/articles/${article.article_id}`}>View Article</Link>
             <ArticleCard article={article} setArticleList={setArticlesByTopicList} />
-          </Link>
+         
           </React.Fragment>
       ))}
     </ul>

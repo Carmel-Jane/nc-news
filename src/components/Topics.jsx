@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Topics = () =>{
-    const [topicList, setTopicList] = useState([]);
+  const [topicList, setTopicList] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  
 
   useEffect(() =>{
     setIsLoading(true)
