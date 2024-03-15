@@ -25,7 +25,7 @@ export default function SingleTopic() {
         setError(err.message); 
       });
   }, [slug]);
-  if (error) return <p>Error: {error}. The requested topic or query does not exist. To see existing topics, find the topics link in the above header. To see existing queries, look at the dropdown options after selecting the articles link </p>; 
+  if (error) return <p>Error: {error}. The requested topic does not exist. To see existing topics, find the topics link in the above header. </p>; 
 
   if (isLoading) return <p>Loading...</p>;
    
