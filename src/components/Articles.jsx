@@ -12,6 +12,7 @@ const Articles = ()=>{
   const [sort_by, setSortBy] = useState(searchParams.get('sort_by')|| "created_at")
   const [order, setOrder] = useState(searchParams.get('order')||"desc")
   const {topic} = useParams()
+  const [error, setError] = useState(null);
  
  
   useEffect(() =>{
@@ -23,9 +24,9 @@ const Articles = ()=>{
       setIsLoading(false)
     })
     .catch((err) =>{
-      console.log(err, "fetch Article list error")
+   setError(err)
     })
-  }, [order, sort_by, topic])
+  }, [order, sort_by])
 
   const handleSortByChange = (e) => {
     setSortBy(e.target.value)
@@ -36,12 +37,19 @@ const handleOrderChange = (e) => {
 }
 
   if (isLoading) return <p>Loading...</p>
+  if (error) {
+    return (
+      <h1>
+        {error.status}: {error.data.msg}
+      </h1>
+    );
+  }
 
   return (   <>
   <h2>Articles</h2>
     <section className="dropdown-menu">
         <FormControl className = "dropdown-select">
-            <InputLabel id="sort-by-label">Sort by</InputLabel>
+            <InputLabel id="sort-by-label" htmlFor="sort-by">Sort by</InputLabel>
             <Select
               labelId="sort-by-label"
               id="sort-by"
@@ -55,7 +63,7 @@ const handleOrderChange = (e) => {
             </Select>
         </FormControl>
         <FormControl className = "dropdown-select">
-            <InputLabel id="order-by-label">Order by</InputLabel>
+            <InputLabel id="order-by-label"  htmlFor="order-by" >Order by</InputLabel>
             <Select
               labelId="order-by-label"
               id="order-by"

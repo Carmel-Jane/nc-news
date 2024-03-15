@@ -5,6 +5,7 @@ const Header =() => {
     <nav className="nav-bar">
         <h1 className="header-title">NC NEWS</h1>
       <div className="nav-links">
+        <Link to="/">Home</Link>
         <Link to="/topics">Topics</Link>
         <Link to="/articles">Articles</Link>
       </div>

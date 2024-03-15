@@ -8,6 +8,7 @@ import { useState } from "react";
 import Topics from "./components/Topics";
 import SingleTopic from "./components/SingleTopic";
 import Articles from "./components/Articles"
+import ErrorPageNotFound from "./components/ErrorPageNotFound";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
