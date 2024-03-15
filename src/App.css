@@ -71,6 +71,52 @@
 .nav-links a:hover {
   color: blue;
 }
+.home-message {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  color: #333;
+}
+
+.header-title {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.home-content {
+  background-color: rgb(220, 220, 220);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.home-content h3 {
+  color: red;
+}
+
+.home-content p {
+  margin-bottom: 15px;
+}
+
+.home-content a {
+  color: blue;
+}
+
+.home-content a:hover {
+  text-decoration: underline;
+}
+.articles-container {
+  margin: 20px;
+}
+
+.article-list {
+  list-style: none;
+  padding: 0;
+}
+
+.article-container {
+  margin-bottom: 20px;
+}
 
 .article-card {
   display: flex;
@@ -86,18 +132,40 @@
 .article-card-header{
   background-color:  rgb(220, 220, 220);
   border-radius: 10px;
-  display: flex;
-  justify-content: space-around;
+  padding: 10px;
+}
+.article-title {
+  color: black;
+  margin: 0;
+}
+
+.article-author {
+  color: #555;
+  margin: 0;
+}
+
+.article-date {
+  color: #555;
+  margin: 0;
 }
 .article-card-image{
-  max-width: 80%;
+  max-width: 50%;
   align-self: center;
-}
+ border-radius: 10px;
+  margin-bottom: 10px;
+} 
 .article-card-details {
   background-color:  rgb(220, 220, 220);
   border-radius: 10px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
+}
+.article-comments,
+.article-votes,
+.article-topic {
+  color: #555;
+  margin: 5px 0;
 }
 .single-article{
   margin: 10px;
@@ -178,22 +246,47 @@
   background-color: #f0f0f0;
 }
 
-.topic-list{
-  list-style: none;
+.topics-container {
+  margin: 20px;
 }
 
-.topic-container {
-  border: 1px solid #ccc;
-  padding: 10px;
+.header-title {
+  color: red;
   margin-bottom: 10px;
 }
 
-.topic-container a {
+.topic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.topic-container {
+  margin-bottom: 20px;
+}
+
+.topic-link {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
 
-.topic-container:hover {
-  background-color: #f9f9f9;
+.topic-link:hover {
+  color: blue;
+}
+
+.topic-card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.topic-name {
+  color: black;
+  margin: 0;
+}
+
+.topic-description {
+  color: #555;
 }

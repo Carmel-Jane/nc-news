@@ -79,13 +79,19 @@ if (error) {
             </Select>
         </FormControl>
     </section>
-    <div>
-      <ul>{articleList.map((article) => {
-        return    <React.Fragment key={article.article_id}>
-        <Link to={`/articles/${article.article_id}`}>View Article</Link>
-        <ArticleCard article={article}/>
-        </React.Fragment>
-      })}</ul>
+    <div className="articles-container">
+      <ul className="article-list">
+        {articleList.map((article) => (
+          <React.Fragment key={article.article_id}>
+            <div className="article-container">
+              <Link to={`/articles/${article.article_id}`} className="article-link">
+                View Article
+              </Link>
+              <ArticleCard article={article} />
+            </div>
+          </React.Fragment>
+        ))}
+      </ul>
     </div>
     </>
   );

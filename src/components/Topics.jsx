@@ -22,20 +22,22 @@ const Topics = () =>{
   if (isLoading) return <p>Loading...</p>
 
   return (
-    <div>
-    <h2>Topics</h2>
-    <ul>
-      {topicList.map((topic) => (
-      <React.Fragment  key= {topic.slug}>
-          <div className="topic-container">
-            <Link to={`/topics/${topic.slug}`}>View articles about {topic.slug}</Link>
-            <TopicCard topic={topic} />
-          </div>
+    <div className="topics-container">
+      <h2 className="header-title">Topics</h2>
+      <ul className="topic-list">
+        {topicList.map((topic) => (
+          <React.Fragment key={topic.slug}>
+            <div className="topic-container">
+              <Link to={`/topics/${topic.slug}`} className="topic-link">
+                View articles about {topic.slug}
+              </Link>
+              <TopicCard topic={topic} />
+            </div>
           </React.Fragment>
-      ))}
-    </ul>
-  </div>
-);
-}
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Topics
