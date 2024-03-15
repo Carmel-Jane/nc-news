@@ -15,18 +15,21 @@ const Articles = ()=>{
   const [error, setError] = useState(null);
  
  
-  useEffect(() =>{
-    setIsLoading(true)
+  useEffect(() => {
+    setIsLoading(true);
     fetchAllArticles(topic, sort_by, order)
-    .then((articlesData) =>{
-      setArticleList(articlesData)
-      setSearchParams({sort_by,order })
-      setIsLoading(false)
-    })
-    .catch((err) =>{
-   setError(err)
-    })
-  }, [order, sort_by])
+      .then((articlesData) => {
+        if (articlesData.error) {
+          throw new Error(articlesData.error);
+        }
+        setArticleList(articlesData);
+        setSearchParams({ sort_by, order });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }, [order, sort_by]);
 
   const handleSortByChange = (e) => {
     setSortBy(e.target.value)
@@ -37,13 +40,10 @@ const handleOrderChange = (e) => {
 }
 
   if (isLoading) return <p>Loading...</p>
-  if (error) {
-    return (
-      <h1>
-        {error.status}: {error.data.msg}
-      </h1>
-    );
-  }
+  
+ if (error) {
+  return <h1>Error: {error}</h1>;
+}
 
   return (   <>
   <h2>Articles</h2>

@@ -28,6 +28,8 @@ function App() {
         <Route path="/topics" element={<Topics/>} />
         <Route path={`/topics/:slug`} element={<SingleTopic />} />
         <Route path="*" element={<ErrorPageNotFound />}/>
+
+
       </Routes>
       </UserContext.Provider>
     </>

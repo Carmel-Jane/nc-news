@@ -7,27 +7,33 @@ import React from "react";
 export default function SingleTopic() {
   const [isLoading, setIsLoading] = useState(true);
   const [articlesByTopicList, setArticlesByTopicList] = useState([]);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null); // Add an error state
+
   const { slug } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-   fetchAllArticles(slug).then((articles) => {
+    fetchAllArticles(slug)
+      .then((articles) => {
+        if (articles.error) {
+          throw new Error(articles.error);
+        }
         setArticlesByTopicList(Array.isArray(articles) ? articles : []);
-      setIsLoading(false);
-    }).catch((err) =>{
-        setError(err);
-    });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message); 
+      });
   }, [slug]);
- 
-  if (isLoading) return <p>Loading...</p>
+  if (error) return <p>Error: {error}. The requested topic or query does not exist. To see existing topics, find the topics link in the above header. To see existing queries, look at the dropdown options after selecting the articles link </p>; 
+
+  if (isLoading) return <p>Loading...</p>;
+   
 
   if (!Array.isArray(articlesByTopicList)) {
     console.error("articlesByTopicList is not an array:", articlesByTopicList);
     return <p>Error: Unable to fetch articles. Please try again later.</p>;
   }
-  if (error) {
-    return <h1>{error.status}: {error.data.msg}</h1>}
 
  return (
   <>
