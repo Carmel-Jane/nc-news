@@ -54,3 +54,8 @@ export function postComment (articleId, commentData) {
 export function deleteComment (commentId) {
   return myApi.delete(`comments/${commentId}`)
 }
+export function fetchAllUsers () {
+  return myApi.get(`users`).then((res) =>{
+    return res.data.users
+  })
+}

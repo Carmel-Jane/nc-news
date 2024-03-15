@@ -9,6 +9,7 @@ import Topics from "./components/Topics";
 import SingleTopic from "./components/SingleTopic";
 import Articles from "./components/Articles"
 import ErrorPageNotFound from "./components/ErrorPageNotFound";
+import Users from "./components/Users";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -28,6 +29,7 @@ function App() {
         <Route path="/topics" element={<Topics/>} />
         <Route path={`/topics/:slug`} element={<SingleTopic />} />
         <Route path="*" element={<ErrorPageNotFound />}/>
+        <Route path="/users" element={<Users currentUser={currentUser}/>} />
 
 
       </Routes>
