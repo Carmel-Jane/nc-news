@@ -15,18 +15,22 @@ const Articles = ()=>{
   const [error, setError] = useState(null);
  
  
-  useEffect(() =>{
-    setIsLoading(true)
+  useEffect(() => {
+    setIsLoading(true);
     fetchAllArticles(topic, sort_by, order)
-    .then((articlesData) =>{
-      setArticleList(articlesData)
-      setSearchParams({sort_by,order })
-      setIsLoading(false)
-    })
-    .catch((err) =>{
-   setError(err)
-    })
-  }, [order, sort_by])
+      .then((articlesData) => {
+        if (articlesData.error) {
+          throw new Error(articlesData.error);
+        }
+        setArticleList(articlesData);
+        setSearchParams({ sort_by, order });
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.message)
+        setError(err.message);
+      });
+  }, [order, sort_by]);
 
   const handleSortByChange = (e) => {
     setSortBy(e.target.value)
@@ -36,14 +40,13 @@ const handleOrderChange = (e) => {
     setOrder(e.target.value)
 }
 
+if (error) {
+  return <h2>Error: The requested query does not exist. To see available queries, go to the articles link on the above header and look at the dropdown options.</h2>;
+}
+
   if (isLoading) return <p>Loading...</p>
-  if (error) {
-    return (
-      <h1>
-        {error.status}: {error.data.msg}
-      </h1>
-    );
-  }
+
+ 
 
   return (   <>
   <h2>Articles</h2>
