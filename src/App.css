@@ -48,11 +48,13 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  font-family: 'Roboto', sans-serif; 
 }
 
 .header-title {
-  color: red;
+  color: #333; 
   margin-bottom: 10px; 
+  text-transform: uppercase; 
 }
 
 .nav-links {
@@ -66,10 +68,15 @@
   text-decoration: none;
   color: #333;
   margin: 0 10px;
+  transition: color 0.3s ease; 
 }
 
 .nav-links a:hover {
-  color: blue;
+  color: #007BFF; 
+}
+
+.nav-links a:focus {
+  outline: 2px solid #007BFF; 
 }
 .home-message {
   margin: 20px;
@@ -77,36 +84,48 @@
   background-color: #f0f0f0;
   border-radius: 10px;
   color: #333;
+  font-family: 'Roboto', sans-serif; 
+  line-height: 1.5; 
 }
 
 .header-title {
-  color: red;
-  margin-bottom: 10px;
+  color: #333; 
+  margin-bottom: 20px; 
+  text-transform: uppercase; 
 }
 
 .home-content {
   background-color: rgb(220, 220, 220);
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px; 
 }
 
 .home-content h3 {
-  color: red;
+  color: #333; 
+  margin-bottom: 10px; 
 }
 
 .home-content p {
-  margin-bottom: 15px;
+  margin-bottom: 20px; 
 }
 
 .home-content a {
-  color: blue;
+  color: #007BFF; 
+  transition: color 0.3s ease; 
 }
 
 .home-content a:hover {
-  text-decoration: underline;
+  color: #0056b3; 
+  text-decoration: underline; 
+}
+
+.home-content a:focus {
+  outline: 2px solid #007BFF; 
 }
 .articles-container {
   margin: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
 }
 
 .article-list {
@@ -116,56 +135,72 @@
 
 .article-container {
   margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  padding: 20px;
 }
 
 .article-card {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  border: solid black;
+  border: 1px solid #ddd;
   border-radius: 10px;
-  list-style: none;
-  background-color:#f0f0f0;
-  color: black;
-  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
 }
-.article-card-header{
-  background-color:  rgb(220, 220, 220);
+
+.article-card-header {
+  background-color: #f0f0f0;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
 }
+
 .article-title {
-  color: black;
-  margin: 0;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.article-author {
-  color: #555;
-  margin: 0;
-}
-
+.article-author,
 .article-date {
   color: #555;
-  margin: 0;
-}
-.article-card-image{
-  max-width: 50%;
-  align-self: center;
- border-radius: 10px;
   margin-bottom: 10px;
-} 
-.article-card-details {
-  background-color:  rgb(220, 220, 220);
+}
+
+.article-card-image {
+  max-width: 100%;
+  align-self: center;
   border-radius: 10px;
-  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.article-card-details {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
   display: flex;
   justify-content: space-around;
 }
+
 .article-comments,
 .article-votes,
 .article-topic {
   color: #555;
-  margin: 5px 0;
+  margin: 10px 0;
+}
+
+.article-link {
+  color: #007BFF;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.article-link:hover,
+.article-link:focus {
+  color: #0056b3;
+  text-decoration: underline;
 }
 .single-article{
   margin: 10px;
@@ -248,20 +283,27 @@
 
 .topics-container {
   margin: 20px;
+  display: flex; /* Moved from .topic-list */
+  flex-wrap: wrap; /* Moved from .topic-list */
+  justify-content: space-between; /* Moved from .topic-list */
 }
 
 .header-title {
   color: red;
   margin-bottom: 10px;
+  width: 100%; /* Add this line to make the header take the full width */
 }
 
 .topic-list {
   list-style: none;
   padding: 0;
+  width: 100%; /* Add this line to make the list take the full width */
 }
 
 .topic-container {
   margin-bottom: 20px;
+  flex: 1 0 21%; /* Adjust this value as needed */
+  margin: 1%; /* Adjust this value as needed */
 }
 
 .topic-link {
