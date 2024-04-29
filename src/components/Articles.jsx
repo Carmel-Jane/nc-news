@@ -48,51 +48,56 @@ if (error) {
 
  
 
-  return (   <>
-  <h2>Articles</h2>
-    <section className="dropdown-menu">
-        <FormControl className = "dropdown-select">
-            <InputLabel id="sort-by-label" htmlFor="sort-by">Sort by</InputLabel>
-            <Select
-              labelId="sort-by-label"
-              id="sort-by"
-              value={sort_by}
-              label="Sort by"
-              onChange={handleSortByChange}
-            >
-                <MenuItem value="created_at">Date</MenuItem>
-                <MenuItem value="comment_count">Comment count</MenuItem>
-                <MenuItem value="votes">Votes</MenuItem>
-            </Select>
+  return (
+    <>
+      <h2 className="article-header">Articles</h2>
+      <section className="dropdown-menu">
+        <FormControl className="dropdown-select">
+          <InputLabel id="sort-by-label" htmlFor="sort-by">
+            Sort by
+          </InputLabel>
+          <Select
+            labelId="sort-by-label"
+            id="sort-by"
+            value={sort_by}
+            label="Sort by"
+            onChange={handleSortByChange}
+          >
+            <MenuItem value="created_at">Date</MenuItem>
+            <MenuItem value="comment_count">Comment count</MenuItem>
+            <MenuItem value="votes">Votes</MenuItem>
+          </Select>
         </FormControl>
-        <FormControl className = "dropdown-select">
-            <InputLabel id="order-by-label"  htmlFor="order-by" >Order by</InputLabel>
-            <Select
-              labelId="order-by-label"
-              id="order-by"
-              value={order}
-              label="Order by"
-              onChange={handleOrderChange}
-            >
-                <MenuItem value="asc">Asc</MenuItem>
-                <MenuItem value="desc">Desc</MenuItem>
-            </Select>
+        <FormControl className="dropdown-select">
+          <InputLabel id="order-by-label" htmlFor="order-by">
+            Order by
+          </InputLabel>
+          <Select
+            labelId="order-by-label"
+            id="order-by"
+            value={order}
+            label="Order by"
+            onChange={handleOrderChange}
+          >
+            <MenuItem value="asc">Asc</MenuItem>
+            <MenuItem value="desc">Desc</MenuItem>
+          </Select>
         </FormControl>
-    </section>
-    <div className="articles-container">
-      <ul className="article-list">
-        {articleList.map((article) => (
-          <React.Fragment key={article.article_id}>
-            <div className="article-container">
-              <Link to={`/articles/${article.article_id}`} className="article-link">
-                View Article
-              </Link>
-              <ArticleCard article={article} />
-            </div>
-          </React.Fragment>
-        ))}
-      </ul>
-    </div>
+      </section>
+      <div className="articles-container">
+        <ul className="article-list">
+          {articleList.map((article) => (
+            <React.Fragment key={article.article_id}>
+              <div className="article-container">
+                <Link to={`/articles/${article.article_id}`} className="article-link">
+                  View Article
+                </Link>
+                <ArticleCard article={article} />
+              </div>
+            </React.Fragment>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

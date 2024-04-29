@@ -23,12 +23,12 @@ const Topics = () =>{
 
   return (
     <div className="topics-container">
-      <h2 className="header-title">Topics</h2>
+      <h2 className="topic-header">Topics</h2>
       <ul className="topic-list">
         {topicList.map((topic) => (
           <React.Fragment key={topic.slug}>
             <div className="topic-container">
-              <Link to={`/topics/${topic.slug}`} className="topic-link">
+              <Link to={`/topics/${topic.slug}`} className="article-link">
                 View articles about {topic.slug}
               </Link>
               <TopicCard topic={topic} />

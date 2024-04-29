@@ -1,8 +1,8 @@
 const Home = () =>{
     return( <div className="home-message">
-    <h2 className="header-title">Welcome to NC News.</h2>
+    <h2 className="home-header">Welcome to NC News.</h2>
     <div className="home-content">
-      <h3 className="header-title">Introduction</h3>
+      <h3 className="home-header">Introduction</h3>
       <p>
         On this site, you can browse articles, vote, and post comments on
         each article. You can browse through the articles by their topic,
@@ -12,7 +12,7 @@ const Home = () =>{
         dropdown menu. The options are date, comment count, and vote count-
         these can be in an ascending or descending order.
       </p>
-      <h3 className="header-title">Instructions</h3>
+      <h3 className="home-header">Instructions</h3>
       <p>
         To post a comment on an article, click on the link to the article. On
         the page, you will find a box - this is where you should write your

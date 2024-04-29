@@ -49,12 +49,14 @@
   align-items: center;
   padding: 10px;
   font-family: 'Roboto', sans-serif; 
+  width: 100%; 
 }
 
 .header-title {
   color: #333; 
   margin-bottom: 10px; 
   text-transform: uppercase; 
+  width: 100%; 
 }
 
 .nav-links {
@@ -80,52 +82,48 @@
 }
 .home-message {
   margin: 20px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  color: #333;
-  font-family: 'Roboto', sans-serif; 
-  line-height: 1.5; 
-}
-
-.header-title {
-  color: #333; 
-  margin-bottom: 20px; 
-  text-transform: uppercase; 
+  width: 100%; 
 }
 
 .home-content {
-  background-color: rgb(220, 220, 220);
+  background-color: #f0f0f0;
   border-radius: 10px;
-  padding: 20px; 
+  padding: 20px;
+  width: calc(100% - 40px); 
+  margin: 0 auto; 
 }
 
 .home-content h3 {
-  color: #333; 
-  margin-bottom: 10px; 
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .home-content p {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .home-content a {
-  color: #007BFF; 
-  transition: color 0.3s ease; 
+  color: #007BFF;
+  transition: color 0.3s ease;
 }
 
 .home-content a:hover {
-  color: #0056b3; 
-  text-decoration: underline; 
+  color: #0056b3;
+  text-decoration: underline;
 }
 
 .home-content a:focus {
-  outline: 2px solid #007BFF; 
+  outline: 2px solid #007BFF;
 }
-.articles-container {
-  margin: 20px;
-  font-family: 'Roboto', sans-serif;
-  color: #333;
+
+.dropdown-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdown-select {
+  width: 30%; 
 }
 
 .article-list {
@@ -140,45 +138,66 @@
   padding: 20px;
 }
 
+.article-link {
+  color: #007BFF;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.article-link::after {
+  content: "→"; 
+  position: absolute;
+  right: -20px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.article-link:hover,
+.article-link:focus {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Article Card Component */
+
 .article-card {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
+  margin: 5px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
   color: #333;
-  padding: 20px;
+  padding: 10px;
 }
 
 .article-card-header {
   background-color: #f0f0f0;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .article-title {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .article-author,
 .article-date {
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .article-card-image {
-  max-width: 100%;
-  align-self: center;
+  max-width: 80%;
+  max-height: 200px;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .article-card-details {
   background-color: #f0f0f0;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
 }
@@ -187,58 +206,43 @@
 .article-votes,
 .article-topic {
   color: #555;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
-.article-link {
-  color: #007BFF;
-  text-decoration: none;
-  display: inline-block;
+/* Single Article Component */
+
+.single-article {
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.single-article-header,
+.single-article-body,
+.single-article-details {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
+
+.single-article-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 
-.article-link:hover,
-.article-link:focus {
-  color: #0056b3;
-  text-decoration: underline;
-}
-.single-article{
-  margin: 10px;
-  border: solid black;
-  border-radius: 10px;
-  background-color:#f0f0f0;
-  color: black;
-  padding: 10px;
-}
-.single-article-details {
-  background-color:  rgb(220, 220, 220);
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-around;
-}
-.single-article-header{
-  background-color:  rgb(220, 220, 220);
-  border-radius: 10px;
-}
-.single-article-body{
-  margin: 10px;
-  border: solid black;
-  border-radius: 10px;
-  background-color:#f0f0f0;
-  color: black;
-  padding: 10px;
-}
-
-.comment-card{
-  list-style: none;
-  text-align: left;
-  border-bottom: solid black;
-}
 .article-voting-buttons {
   display: flex;
   gap: 10px;
-  
 }
+
 #upVote {
   background-color: green;
   color: white;
@@ -246,12 +250,9 @@
   padding: 5px 10px;
   cursor: pointer;
 }
-
 #upVote:hover {
   background-color: darkgreen;
 }
-
-
 #downVote {
   background-color: red;
   color: white;
@@ -259,51 +260,85 @@
   padding: 5px 10px;
   cursor: pointer;
 }
-
 #downVote:hover {
   background-color: darkred;
 }
 
-.toast-container{
+/* Accessibility */
 
-    width: 250px; 
-    font-size: 14px;
-  }
-  
+.single-article,
+.article-card,
+.article-container {
+  outline: none;
+}
+
+.single-article:hover,
+.article-card:hover,
+.article-container:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.toast-container{
+  width: 250px; 
+  font-size: 14px;
+}
 .delete-button{
   color: red;
 }
 
+.comment-card{
+  list-style: none; 
+  border-bottom: 1px solid #ccc; 
+  padding: 10px; 
+  background-color: #f9f9f9; 
+}
 .dropdown-select {
   margin: 10px;
   border: solid black;
   border-radius: 10px;
   background-color: #f0f0f0;
 }
-
 .topics-container {
   margin: 20px;
-  display: flex; /* Moved from .topic-list */
-  flex-wrap: wrap; /* Moved from .topic-list */
-  justify-content: space-between; /* Moved from .topic-list */
 }
 
-.header-title {
-  color: red;
+.header-title{
+  color: rgb(29, 57, 146);
   margin-bottom: 10px;
-  width: 100%; /* Add this line to make the header take the full width */
+  width: 100%; 
+}
+
+.home-header{
+  color: rgb(29, 57, 146);
+  margin-bottom: 10px;
+  width: 100%; 
+}
+
+.article-header {
+  color: rgb(29, 57, 146);
+  margin-bottom: 10px;
+  width: 100%; 
+}
+.topic-header{
+  color: rgb(29, 57, 146);
+  margin-bottom: 10px;
+  width: 100%; 
 }
 
 .topic-list {
   list-style: none;
   padding: 0;
-  width: 100%; /* Add this line to make the list take the full width */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .topic-container {
   margin-bottom: 20px;
-  flex: 1 0 21%; /* Adjust this value as needed */
-  margin: 1%; /* Adjust this value as needed */
+  flex: 1 0 calc(33.333% - 20px); 
+  margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .topic-link {
@@ -311,6 +346,7 @@
   color: #333;
   font-weight: bold;
   margin-bottom: 5px;
+  padding: 10px; 
   display: block;
 }
 

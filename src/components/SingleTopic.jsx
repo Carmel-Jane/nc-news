@@ -40,7 +40,7 @@ export default function SingleTopic() {
     <h1>Articles about {slug}</h1>
     <ul className="article-list">
       {articlesByTopicList.map((article) => (<React.Fragment key={article.article_id}>
-          <Link to={`/articles/${article.article_id}`}>View Article</Link>
+        <Link to={`/articles/${article.article_id}`} className="article-link">View Article</Link>
             <ArticleCard article={article} setArticleList={setArticlesByTopicList} />
          
           </React.Fragment>
